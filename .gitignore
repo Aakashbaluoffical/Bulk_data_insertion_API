@@ -1,0 +1,38 @@
+# Python-related
+*.pyc
+*.pyo
+__pycache__/
+
+# Django-related
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
+media
+staticfiles
+*.sqlite3
+*.log
+
+# Environment variable file
+.env
+
+# Virtual environment
+venv/
+env/
+*.env
+
+# IDE-related (if using editors like VSCode, PyCharm, etc.)
+.vscode/
+.idea/
+*.swp
+
+# MacOS-specific
+.DS_Store
+
+# Windows-specific
+Thumbs.db
+
+# Other temporary files
+*.bak
+*.tmp
