@@ -43,8 +43,8 @@ class UploadCSV(APIView):
             return JsonResponse({"error": "Only supports .CSV files"}, status=status.HTTP_400_BAD_REQUEST)
 
         errors = []
-        
         valid_users = []
+        counter = 0
 
         for row in  reader:
             
@@ -61,9 +61,9 @@ class UploadCSV(APIView):
                     "password" : row.get('password')
                    
             }
-            print("user_profile_datauser_profile_datauser_profile_data",user_profile_data)
-            print("user_datauser_data",user_data)
-            print("errorserrors,",errors)
+            # print("user_profile_datauser_profile_datauser_profile_data",user_profile_data)
+            # print("user_datauser_data",user_data)
+            # print("errorserrors,",errors)
             #  {'first_name': 'William', 'last_name': 'Santiago', 'age': '25', 'email': 'williamsantiago@gmail.com', 'is_active': True}
                 # {'username': 'williamsantiago', 'password': '1fncdnru'}
 
@@ -100,12 +100,20 @@ class UploadCSV(APIView):
                 continue
 
 
-            print("valid_users",valid_users)
+            # print("valid_users",valid_users)
             if valid_users:
                 User.objects.bulk_create(valid_users)
                 valid_users.pop()
+                counter+=1
+                print("counter:",counter)
                 
+        print("errors:",errors)
+        print("errors len:",len(errors))
 
         
-        return JsonResponse({"Data": "Inserted !"}, status=status.HTTP_200_OK)
+        return JsonResponse({"Data": {
+            "Sucessfull":f"The {counter}  records successfully saved.",
+            "Rejected":f"The {len(errors)}  records rejected.",
+            "Detailed   validation  errors  for rejected    records.":errors
+        }}, status=status.HTTP_200_OK)
 
