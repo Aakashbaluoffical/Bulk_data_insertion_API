@@ -4,7 +4,9 @@ User Data API - Bulk Data Insertion
 ===================================
 This project aims to create a Django RestFramework API for inserting user data from a .csv file into a database with validation checks. The API validates various fields like email, age, username, and password to ensure that the data being inserted is accurate and meets the required criteria.
 
-![image](https://github.com/user-attachments/assets/c09d018c-c0db-4b0d-990b-16eb8ad9254e)
+![image](https://github.com/user-attachments/assets/a27dbf05-e093-4acf-953b-7fd686c8bb2c)
+
+
 
 
 Features
